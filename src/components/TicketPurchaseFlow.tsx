@@ -33,7 +33,9 @@ export const TicketPurchaseFlow = ({ product, onBack }: TicketPurchaseFlowProps)
   const { createOrder, loading } = useOrders();
   const { toast } = useToast();
 
-  const totalAmount = product.price * formData.quantity;
+  // Valor fixo da marmita
+  const fixedPrice = 30;
+  const totalAmount = fixedPrice * formData.quantity;
 
   const handleFormSubmit = async () => {
     try {
@@ -137,12 +139,21 @@ export const TicketPurchaseFlow = ({ product, onBack }: TicketPurchaseFlowProps)
         />
       </div>
 
-      <div className="bg-muted/50 p-4 rounded-lg">
-        <div className="flex justify-between items-center">
+      <div className="bg-muted/50 p-4 rounded-lg space-y-2">
+        <div className="flex justify-between items-center flex-wrap gap-2">
           <span className="text-lg font-medium">Total:</span>
           <span className="text-2xl font-bold text-primary">
             {totalAmount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
           </span>
+        </div>
+        <div>
+          <span className="font-semibold block mb-1">Acompanhamentos:</span>
+          <ul className="list-disc ml-5 text-sm text-muted-foreground space-y-1">
+            <li>Arroz</li>
+            <li>Farofa</li>
+            <li>Vinagrete</li>
+            <li>Refrigerante pequeno</li>
+          </ul>
         </div>
       </div>
 

@@ -21,6 +21,9 @@ export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
     });
   };
 
+
+  // Valor fixo da marmita
+  const fixedPrice = 30;
   const formatPrice = (price: number) => {
     return price.toLocaleString('pt-BR', {
       style: 'currency',
@@ -58,7 +61,7 @@ export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
           </div>
         </div>
       )}
-      
+
       <CardHeader className="flex-1">
         <CardTitle className="text-xl text-foreground">{product.name}</CardTitle>
         <CardDescription className="text-muted-foreground line-clamp-3">
@@ -71,14 +74,23 @@ export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
           <Calendar className="h-4 w-4" />
           <span>{formatDate(product.event_date)}</span>
         </div>
-        
+
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Users className="h-4 w-4" />
           <span>Vendidos: {availability}</span>
         </div>
 
         <div className="text-2xl font-bold text-primary">
-          {formatPrice(product.price)}
+          {formatPrice(fixedPrice)}
+        </div>
+
+        <div className="mt-2">
+          <span className="font-semibold">Acompanhamentos:</span>
+          <ul className="list-disc ml-5 text-sm text-muted-foreground">
+            <li>Arroz</li>
+            <li>Farofa</li>
+            <li>Refrigerante pequeno</li>
+          </ul>
         </div>
       </CardContent>
 
